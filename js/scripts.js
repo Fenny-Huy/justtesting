@@ -7,16 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("year").textContent = new Date().getFullYear();
 
   // Set up event listeners for navigation links
-  document.getElementById("home-link").addEventListener("click", (e) => {
-    e.preventDefault();
+  document.getElementById("home-link").addEventListener("click", () => {
     navigateTo("home");
   });
-  document.getElementById("televisions-link").addEventListener("click", (e) => {
-    e.preventDefault();
+  document.getElementById("televisions-link").addEventListener("click", () => {
     navigateTo("televisions");
   });
-  document.getElementById("about-link").addEventListener("click", (e) => {
-    e.preventDefault();
+  document.getElementById("about-link").addEventListener("click", () => {
     navigateTo("about");
   });
   // Clicking the logo returns to the Home page
@@ -42,18 +39,14 @@ function navigateTo(page) {
     activeLink.classList.add("active");
   }
 
+
   // Load the corresponding component based on the page
-  switch (page) {
-    case "home":
-      content.innerHTML = homeComponent();
-      break;
-    case "televisions":
-      content.innerHTML = televisionsComponent();
-      break;
-    case "about":
-      content.innerHTML = aboutComponent();
-      break;
-    default:
-      content.innerHTML = "<p>Page not found</p>";
-  }
+  const pageComponents = {
+    home: homeComponent,
+    televisions: televisionsComponent,
+    about: aboutComponent
+  };
+  
+  const selectedComponent = pageComponents[page] || (() => "<p>Page not found</p>");
+  content.innerHTML = selectedComponent();
 }
