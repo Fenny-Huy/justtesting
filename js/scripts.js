@@ -1,46 +1,51 @@
-import { homeComponent } from "./home.js";
-import { televisionsComponent } from "./televisions.js";
-import { aboutComponent } from "./about.js";
+import homeComponent from "./home.js";
+import televisionsComponent from "./televisions.js";
+import aboutComponent from "./about.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Set current year in footer
+  //set the year in the footer
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Set up event listeners for navigation links
-  document.getElementById("home-link").addEventListener("click", () => {
-    navigateTo("home");
-  });
-  document.getElementById("televisions-link").addEventListener("click", () => {
-    navigateTo("televisions");
-  });
-  document.getElementById("about-link").addEventListener("click", () => {
-    navigateTo("about");
-  });
-  // Clicking the logo returns to the Home page
-  document.getElementById("logo").addEventListener("click", () => {
-    navigateTo("home");
+  //get the id of the link id in the nav to navigate to the page
+  const links = [
+    ["home-link", "home"],
+    ["televisions-link", "televisions"],
+    ["about-link", "about"],
+    ["logo", "home"],
+  ];
+
+  links.forEach(([linkId, page]) => {
+    const link = document.getElementById(linkId);
+    if (link) {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        navigateTo(page);
+      });
+    }
   });
 
-  // Load the default page (Home)
+
+
+  //default page is home
   navigateTo("home");
 });
 
 function navigateTo(page) {
   const content = document.getElementById("content");
 
-  // Remove active class from all nav links
+  //remove the active from the class of the <a> in <li> in <ul> in <nav>
   document.querySelectorAll("nav ul li a").forEach((link) =>
-    link.classList.remove("active")
+    link.classList.remove("active-nav-link")
   );
 
-  // Add active class to the selected link
+  //add active class to nav link of the current page
   const activeLink = document.getElementById(`${page}-link`);
   if (activeLink) {
-    activeLink.classList.add("active");
+    activeLink.classList.add("active-nav-link");
   }
 
 
-  // Load the corresponding component based on the page
+  //insert the content of active page
   const pageComponents = {
     home: homeComponent,
     televisions: televisionsComponent,

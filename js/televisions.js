@@ -1,12 +1,13 @@
-export function televisionsComponent() {
-    return `
-      <section id="televisions-page">
-        <h1>Television Energy Usage</h1>
-        <p>
-          Learn about energy-efficient televisions and how they impact energy
-          consumption.
-        </p>
-      </section>
-    `;
-  }
-  
+const televisionsComponent= () => {
+  return `
+    <section id="televisions-page">
+      <h1>Televisions Page</h1>
+      <p>
+        Televisions Placeholder
+      </p>
+    </section>
+  `;
+}
+
+
+export default televisionsComponent;

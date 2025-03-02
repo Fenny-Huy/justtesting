@@ -1,12 +1,13 @@
-export function aboutComponent() {
-    return `
-      <section id="about-page">
-        <h1>About Us</h1>
-        <p>
-          We provide insights into appliance energy efficiency and sustainability,
-          helping Australians make informed decisions.
-        </p>
-      </section>
-    `;
-  }
+const aboutComponent = () => {
+  return `
+    <section id="about-page">
+      <h1>About Us</h1>
+      <p>
+        This is about us page placeholder
+      </p>
+    </section>
+  `;
+}
+
+export default aboutComponent;
   

@@ -45,7 +45,7 @@ nav ul li a:hover {
 }
 
 /* Highlight active page */
-.active {
+.active-nav-link {
     font-weight: bold;
     border-bottom: 3px solid white;
 }
